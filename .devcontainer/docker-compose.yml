@@ -1,0 +1,35 @@
+# .devcontainer/docker-compose.yml
+version: '3.8'
+
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: ubuntu.Dockerfile
+    container_name: dev-ubuntu
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    depends_on:
+      - mysql
+    networks:
+      - devnet
+
+  mysql:
+    image: mysql:8.4
+    container_name: dev-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: mydb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - devnet
+
+volumes:
+  mysql-data:
+
+networks:
+  devnet:

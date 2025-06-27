@@ -1,0 +1,24 @@
+{
+  "name": "Ubuntu + MySQL Dev Container",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "ubuntu",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        // vscode
+        "ms-ceintl.vscode-language-pack-ja",
+        "vscode-icons-team.vscode-icons",
+        "oderwat.indent-rainbow",
+        "aaron-bond.better-comments",
+        // dev containers
+        "ms-azuretools.vscode-docker",
+        "ms-vscode.remote-containers"
+      ]
+    }
+  },
+  "postCreateCommand": "echo 開発コンテナが初期化されました"
+}
